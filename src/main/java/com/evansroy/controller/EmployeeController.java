@@ -3,9 +3,7 @@ package com.evansroy.controller;
 import com.evansroy.model.Employee;
 import com.evansroy.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +16,11 @@ public class EmployeeController {
     @GetMapping
     public List<Employee> getEmployees(){
         return employeeRepository.findAll();
+    }
+
+    //build create employee REST API
+    @PostMapping
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return employeeRepository.save(employee);
     }
 }
